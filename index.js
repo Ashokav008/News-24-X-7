@@ -1,5 +1,4 @@
-let source = 'the-times-of-india';
-let apiKey = 'a7311ebe091f43d4974168dc9f75dce4';
+let apiKey = '75c6b7aacb8dbb9cb48185400a162ac5';
 // ------------------------Option Selecting--------------
 // ------------------------Option Selecting--------------
 // ------------------------Option Selecting--------------
@@ -48,11 +47,27 @@ function EventHandeler4() {
     backend();
 
 }
+let search = document.getElementById('search')
+search.addEventListener('click', event1)
+
+function event1() {
+    console.log("clicked on cklck event");
+}
+search.addEventListener('blur', event2)
+
+function event2() {
+    console.log("blurred on the sreach ");
+    string = search.value;
+    // console.log(string);
+    category = string;
+    span_Category.innerHTML = category
+    backend();
+}
 
 function backend() {
     let newsAccordion = document.querySelector("#newsAccordion");
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=${apiKey}`, true);
+    xhr.open('GET', `https://gnews.io/api/v4/search?q=${category}&token=${apiKey}&lang=en`, true);
 
     //what to do when response is in process
 
@@ -75,7 +90,7 @@ function backend() {
                     </button>
                   </h2>
                   <div id="flush-collapse${index}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                   <div class="accordion-body"> ${element["content"]}. <a href="${element['url']}" target="_blank">Read more here</a>
+                   <div class="accordion-body"> ${element["content"]}. <a href="${element['url']}" >Read more here</a>
                   </div>
                 </div>
                 </div>`;
@@ -85,6 +100,8 @@ function backend() {
             newsAccordion.innerHTML = newsHtml;
         } else {
             console.log("Some error Occured");
+            let body = document.getElementsByName('body')
+            console.log(body)
         }
     }
     xhr.send();
