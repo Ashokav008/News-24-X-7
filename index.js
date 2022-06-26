@@ -65,8 +65,8 @@ function event2() {
 function backend() {
     let newsAccordion = document.querySelector("#newsAccordion");
     const xhr = new XMLHttpRequest();
-    // xhr.open('GET', `https://gnews.io/api/v4/search?q=${category}&token=${apiKey}&lang=en`, true);
-    xhr.open('GET', `https://newsapi.org/v2/everything?q=${category} &apiKey=${apiKey}`, true);
+    xhr.open('GET', `https://gnews.io/api/v4/search?q=${category}&token=${apiKey}&lang=en`, true);
+    // xhr.open('GET', `https://newsapi.org/v2/everything?q=${category} &apiKey=${apiKey}`, true);
 
     //what to do when response is in process
 
@@ -75,7 +75,7 @@ function backend() {
         if (this.status === 200) {
             let json = JSON.parse(this.responseText);
             let articles = json.articles;
-            // console.log(articles);
+            console.log(articles);
 
             let newsHtml = "";
 
@@ -102,7 +102,7 @@ function backend() {
                 let news = `
                 <div class="col-sm-12 col-md-4 col-xl-4 ms-3 >
                 <div class="card " style="width: 18rem;">
-                <img src=${element["urlToImage"]} class="card-img-top" alt="...">
+                <img src=${element["image"]} class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">${element["title"]}</h5>
                   <p class="card-text"> ${element["content"]}.</p>
