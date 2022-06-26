@@ -1,5 +1,4 @@
-let apiKey = '75c6b7aacb8dbb9cb48185400a162ac5';
-// ------------------------Option Selecting--------------
+let apiKey = '312715d7385b4f2896603853c1662943';
 // ------------------------Option Selecting--------------
 // ------------------------Option Selecting--------------
 let span_Category = document.querySelector("#category");
@@ -13,7 +12,6 @@ drp_downItem[2].addEventListener('click', EventHandeler3);
 drp_downItem[3].addEventListener('click', EventHandeler4);
 
 function EventHandeler1() {
-
     // console.log("clicked on 1st event");
     category = "technology";
     span_Category.innerHTML = "Technology"
@@ -67,7 +65,8 @@ function event2() {
 function backend() {
     let newsAccordion = document.querySelector("#newsAccordion");
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://gnews.io/api/v4/search?q=${category}&token=${apiKey}&lang=en`, true);
+    // xhr.open('GET', `https://gnews.io/api/v4/search?q=${category}&token=${apiKey}&lang=en`, true);
+    xhr.open('GET', `https://newsapi.org/v2/everything?q=${category} &apiKey=${apiKey}`, true);
 
     //what to do when response is in process
 
@@ -81,22 +80,43 @@ function backend() {
             let newsHtml = "";
 
 
+            // articles.forEach(function(element, index) {
+            //     let news = `<div class="accordion accordion-flush" id="accordionFlushExample">
+            //     <div class="accordion-item">
+            //       <h2 class="accordion-header" id="flush-heading${index}">
+            //         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${index}" aria-expanded="false" aria-controls="flush-collapse${index}">
+            //      <b>Breaking News ${index+1}:</b> ${element["title"]}
+            //         </button>
+            //       </h2>
+            //       <div id="flush-collapse${index}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            //        <div class="accordion-body"> ${element["content"]}. <a href="${element['url']}" >Read more here</a>
+            //       </div>
+            //     </div>
+            //     </div>`;
+            //     newsHtml += news;
+
+            // });
+
+            // -- -- -- -- -- -- -- -- --
             articles.forEach(function(element, index) {
-                let news = `<div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-heading${index}">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${index}" aria-expanded="false" aria-controls="flush-collapse${index}">
-                 <b>Breaking News ${index+1}:</b> ${element["title"]}
-                    </button>
-                  </h2>
-                  <div id="flush-collapse${index}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                   <div class="accordion-body"> ${element["content"]}. <a href="${element['url']}" >Read more here</a>
-                  </div>
+                let news = `
+                <div class="col-sm-6 col-md-4 col-xl-4 me-5>
+                <div class="card " style="width: 18rem;">
+                <img src=${element["urlToImage"]} class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">${element["title"]}</h5>
+                  <p class="card-text"> ${element["content"]}.</p>
+                  <a href="${element['url']}" class="btn btn-primary "target="_blank">Read Here</a>
                 </div>
-                </div>`;
+                </div>
+
+              </div>
+              `
                 newsHtml += news;
 
             });
+
+            // =------------------------------
             newsAccordion.innerHTML = newsHtml;
         } else {
             console.log("Some error Occured");
