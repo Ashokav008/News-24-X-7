@@ -100,7 +100,7 @@ function backend() {
             // -- -- -- -- -- -- -- -- --
             articles.forEach(function(element, index) {
                 let news = `
-                <div class="col-sm-6 col-md-4 col-xl-4 me-5>
+                <div class="col-sm-12 col-md-4 col-xl-4 ms-3 >
                 <div class="card " style="width: 18rem;">
                 <img src=${element["urlToImage"]} class="card-img-top" alt="...">
                 <div class="card-body">
