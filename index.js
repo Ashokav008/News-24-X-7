@@ -100,17 +100,16 @@ function backend() {
             // -- -- -- -- -- -- -- -- --
             articles.forEach(function(element, index) {
                 let news = `
-                <div class="col-sm-12 col-md-4 col-xl-4 ms-3 >
-                <div class="card " style="width: 14rem;">
-                <img src=${element["image"]} class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">${element["title"]}</h5>
-                  <p class="card-text"> ${element["content"].substring(0,100)}.</p>
-                  <a href="${element['url']}" class="btn btn-primary "target="_blank">Read Here</a>
+                <div class="col-lg-4 col-md-4 col-sm-12 my-3" >
+                    <div class="card ">
+                      <img src=${element["image"]} class="card-img-top inner-img" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${element["title"]}</h5>
+                            <p class="card-text"> ${element["content"].substring(0,100)}.</p>
+                            <a href="${element['url']}" class="btn btn-primary "target="_blank">Read Here</a>
+                        </div>
+                     </div>
                 </div>
-                </div>
-
-              </div>
               `
                 newsHtml += news;
 
