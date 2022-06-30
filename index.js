@@ -2,7 +2,6 @@
 let apiKey = 'd7db46d3e55953fd91879ad5726db05c';
 
 // ------------------------Option Selecting--------------
-// ------------------------Option Selecting--------------
 let span_Category = document.querySelector("#category");
 let category = "technology";
 let drp_downItem = document.getElementsByClassName("dropdown-item")
@@ -14,12 +13,10 @@ drp_downItem[2].addEventListener('click', EventHandeler3);
 drp_downItem[3].addEventListener('click', EventHandeler4);
 
 function EventHandeler1() {
-
     // console.log("clicked on 1st event");
     category = "technology";
     span_Category.innerHTML = "Technology"
     backend();
-
 }
 
 function EventHandeler2() {
@@ -30,12 +27,10 @@ function EventHandeler2() {
 }
 
 function EventHandeler3() {
-
     // console.log("clicked on 3rd event");
     category = "entertainment";
     span_Category.innerHTML = "Entertainment"
     backend();
-
 }
 
 function EventHandeler4() {
@@ -43,13 +38,12 @@ function EventHandeler4() {
     category = "sports";
     span_Category.innerHTML = "Sports"
     backend();
-
 }
 let search = document.getElementById('search')
 search.addEventListener('click', event1)
 
 function event1() {
-    console.log("clicked on cklck event");
+    console.log("clicked on cklick event");
 }
 search.addEventListener('blur', event2)
 
@@ -63,20 +57,17 @@ function event2() {
 }
 
 function backend() {
-    let newsAccordion = document.querySelector("#newsAccordion");
+    let newsCard = document.querySelector("#newsCard");
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `https://gnews.io/api/v4/search?q=${category}&token=${apiKey}&lang=en`, true);
     // xhr.open('GET', `https://newsapi.org/v2/everything?q=${category} &apiKey=${apiKey}`, true);
-
     //what to do when response is in process
-
     //what to do when response is ready 
     xhr.onload = function() {
         if (this.status === 200) {
             let json = JSON.parse(this.responseText);
             let articles = json.articles;
             console.log(articles);
-
             let newsHtml = "";
             // -- -- -- -- -- -- -- -- --
             articles.forEach(function(element, index) {
@@ -93,11 +84,10 @@ function backend() {
                 </div>
               `
                 newsHtml += news;
-
             });
 
-            // =------------------------------
-            newsAccordion.innerHTML = newsHtml;
+            newsCard.innerHTML = newsHtml;
+
         } else {
             console.log("Some error Occured");
             let body = document.getElementsByName('body')
