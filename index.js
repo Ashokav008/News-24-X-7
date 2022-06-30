@@ -14,6 +14,7 @@ drp_downItem[2].addEventListener('click', EventHandeler3);
 drp_downItem[3].addEventListener('click', EventHandeler4);
 
 function EventHandeler1() {
+
     // console.log("clicked on 1st event");
     category = "technology";
     span_Category.innerHTML = "Technology"
@@ -22,12 +23,10 @@ function EventHandeler1() {
 }
 
 function EventHandeler2() {
-
     // console.log("clicked on 2nd event");
     category = "business";
     span_Category.innerHTML = "Business"
     backend();
-
 }
 
 function EventHandeler3() {
@@ -40,7 +39,6 @@ function EventHandeler3() {
 }
 
 function EventHandeler4() {
-
     // console.log("clicked on 4th event");
     category = "sports";
     span_Category.innerHTML = "Sports"
@@ -80,25 +78,6 @@ function backend() {
             console.log(articles);
 
             let newsHtml = "";
-
-
-            // articles.forEach(function(element, index) {
-            //     let news = `<div class="accordion accordion-flush" id="accordionFlushExample">
-            //     <div class="accordion-item">
-            //       <h2 class="accordion-header" id="flush-heading${index}">
-            //         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${index}" aria-expanded="false" aria-controls="flush-collapse${index}">
-            //      <b>Breaking News ${index+1}:</b> ${element["title"]}
-            //         </button>
-            //       </h2>
-            //       <div id="flush-collapse${index}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-            //        <div class="accordion-body"> ${element["content"]}. <a href="${element['url']}" >Read more here</a>
-            //       </div>
-            //     </div>
-            //     </div>`;
-            //     newsHtml += news;
-
-            // });
-
             // -- -- -- -- -- -- -- -- --
             articles.forEach(function(element, index) {
                 let news = `
