@@ -1,5 +1,4 @@
-// let apiKey = '83a8be6bc41324e89deb7576878c07a9';
-let apiKey = 'd7db46d3e55953fd91879ad5726db05c';
+let apiKey = '312715d7385b4f2896603853c1662943';
 
 // ------------------------Option Selecting--------------
 let span_Category = document.querySelector("#category");
@@ -59,10 +58,9 @@ function event2() {
 function backend() {
     let newsCard = document.querySelector("#newsCard");
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://gnews.io/api/v4/search?q=${category}&token=${apiKey}&lang=en`, true);
-    // xhr.open('GET', `https://newsapi.org/v2/everything?q=${category} &apiKey=${apiKey}`, true);
+    // xhr.open('GET', `https://gnews.io/api/v4/search?q=${category}&token=${apiKey}&lang=en`, true);
+    xhr.open('GET', `https://newsapi.org/v2/everything?q=${category} &apiKey=${apiKey}`, true);
     //what to do when response is in process
-    //what to do when response is ready 
     xhr.onload = function() {
         if (this.status === 200) {
             let json = JSON.parse(this.responseText);
@@ -74,11 +72,11 @@ function backend() {
                 let news = `
                 <div class="col-lg-4 col-md-4 col-sm-12 my-3" >
                     <div class="card ">
-                      <img src=${element["image"]} class="card-img-top inner-img" alt="...">
+                      <img src=${element["urlToImage"]} class="card-img-top inner-img" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">${element["title"]}</h5>
-                            <p class="card-text"> ${element["content"].substring(0,100)}.</p>
-                            <a href="${element['url']}" class="btn btn-primary "target="_blank">Read Here</a>
+                            <h5 class="card-title">${element["title"].substring(0,70)}</h5>
+                            <p class="card-text"> ${element["content"].substring(0,300)} <a href="${element['url']}" class="btn btn-primary "target="_blank">Read Here</a></p>
+                           
                         </div>
                      </div>
                 </div>
@@ -94,6 +92,8 @@ function backend() {
             console.log(body)
         }
     }
+
+    //send the api requesttt....
     xhr.send();
 }
 backend();
