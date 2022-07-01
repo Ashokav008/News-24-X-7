@@ -93,7 +93,6 @@ function backend() {
         }
     }
 
-    //send the api requesttt....
     xhr.send();
 }
 backend();
